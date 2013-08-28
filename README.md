@@ -1,9 +1,9 @@
-# Runnning locally
+# Running locally
 
 Run the server:
 
     npm install # downloads dependencies for web server
-    node web.js
+    npm start
 
 Open http://localhost:5000/ in your browser.
 

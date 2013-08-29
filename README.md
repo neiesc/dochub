@@ -1,7 +1,5 @@
-#DocHub
+#DocHub [![Build Status](https://travis-ci.org/neiesc/dochub.png?branch=master)](https://travis-ci.org/neiesc/dochub)
 =====
-
-[![Build Status](https://travis-ci.org/neiesc/dochub.png?branch=master)](https://travis-ci.org/neiesc/dochub)
 
 # Running locally
 

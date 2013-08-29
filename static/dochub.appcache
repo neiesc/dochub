@@ -41,6 +41,7 @@ js/collections/xsltpages.js
 js/collections/pagescrapes.js
 js/collections/pageelements.js
 js/collections/pythonpages.js
+js/collections/python3pages.js
 js/views/searchresults.js
 js/text.js
 js/views/mozdevcssprop.js
@@ -70,3 +71,4 @@ data/js-mdn.json
 data/php-ext.json
 data/xslt-w3.json
 data/python.json
+data/python3.json

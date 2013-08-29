@@ -3,12 +3,12 @@ DocHub [![Build Status](https://travis-ci.org/neiesc/dochub.png?branch=master)](
 
 # Running locally
 
-*Download de [docfiles](https://github.com/neiesc/dochub/tree/gh-pages) `\*.json` and paste in static/data
-*Run the server:
+* Download de [docfiles](https://github.com/neiesc/dochub/tree/gh-pages) `\*.json` and paste in static/data
+* Run the server:
     npm install # downloads dependencies for web server
     npm install nodemon
     npm start
-*Open http://localhost:5000/ in your browser.
+* Open http://localhost:5000/ in your browser.
 
 # Scraper
 

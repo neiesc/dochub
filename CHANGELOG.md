@@ -1,4 +1,4 @@
-DocHub
+DocHub - Changelog
 ======
 
 ##Init
@@ -11,3 +11,4 @@ DocHub
   <br />[typo](https://github.com/Fil/dochub/commit/09b3ca349b417222e38b059676afb46dc3d4abde)
   <br />[settings.js control](https://github.com/groovecoder/instacss/commit/38cdf05fc55aa6b7dc17c2ac3d79eb0f9ab0a175)
 * Added [Font-Awesome](https://github.com/FortAwesome/Font-Awesome) 
+* Added Python 3 docfiles from [The Python Standard Library](http://docs.python.org/3.3/library/). Version is 3.3.2.

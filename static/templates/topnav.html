@@ -6,23 +6,18 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </a>
-    <a class="brand">DocHub</a>
+    <i class="icon-book icon-light brand" title="DocHub"></i>
     <div class="nav-collapse">
       <ul id="nav-list" class="nav">
-        <li class="active"><a id="nav-css" data-lang="css" class="pointer">CSS</a></li>
-        <li><a id="nav-html" data-lang="html" class="pointer">HTML</a></li>
-        <li><a id="nav-javascript" data-lang="javascript" class="pointer">JavaScript</a></li>
-        <li><a id="nav-dom" data-lang="dom" class="pointer">DOM</a></li>
-        <li><a id="nav-jquery" data-lang="jquery" class="pointer">jQuery</a></li>
-        <li><a id="nav-php" data-lang="php" class="pointer">PHP</a></li>
-        <li><a id="nav-python" data-lang="python" class="pointer">Python<sup>beta</sup></a></li>
-        <!-- <li><a id="nav-xslt" data-lang="xslt" class="pointer">XPath/XSLT</a></li> -->
+	<% for (var i = 0; i < settings.languages.length; i++) { %>
+	  <li><a id="nav-<%= settings.languages[i].lang %>" data-lang="<%= settings.languages[i].lang %>" class="pointer"><%= settings.languages[i].name %></a></li>
+	<% } %>
       </ul>
       <ul id="secondary-nav" class="nav pull-right">
-        <li><a id="github-link" target="_blank" href="http://www.github.com/rgarcia/dochub">GitHub</a></li>
-        <li><a id="twitter-link" target="_blank" href="http://www.twitter.com/documenthub">@documenthub</a></li>
-        <li><a id="nav-about" href="#about">About</a></li>
-        <li><a href="javascript: void(0);" onclick="USR.Main.show(); return false;">Feedback</a></li>
+	<li><a class="icon-github-alt brand" target="_blank" href="http://www.github.com/rgarcia/dochub" title="GitHub"></a></li>
+        <li><a class="icon-twitter brand" target="_blank" href="http://www.twitter.com/documenthub" title="Twitter" ></a></li>
+        <li><a class="icon-info brand" href="#about" title="About"></a></li>
+        <li><a class="icon-user brand" href="javascript: void(0);" onclick="USR.Main.show(); return false;" title="Feedback"></a></li>
       </ul>
     </div>
   </div>

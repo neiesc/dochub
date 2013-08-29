@@ -93,6 +93,11 @@ html {
   margin-top: 10px;
 }
 
+#secondary-nav li {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 div#about {
   display: none;
 }

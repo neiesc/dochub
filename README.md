@@ -1,4 +1,4 @@
-#DocHub [![Build Status](https://travis-ci.org/neiesc/dochub.png?branch=master)](https://travis-ci.org/neiesc/dochub)
+DocHub [![Build Status](https://travis-ci.org/neiesc/dochub.png?branch=master)](https://travis-ci.org/neiesc/dochub)
 =====
 
 # Running locally
@@ -6,6 +6,7 @@
 Run the server:
 
     npm install # downloads dependencies for web server
+    npm install nodemon
     npm start
 
 Open http://localhost:5000/ in your browser.

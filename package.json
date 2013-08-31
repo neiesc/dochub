@@ -1,15 +1,25 @@
 {
-  "name": "dochub-backend",
-  "version": "1.0.1",
-  "dependencies": {
-    "express": "~3.3.x",
-    "requirejs": "~2.1.x",
-    "underscore": "~1.5.x",
-    "mocha": "~1.9.x",
-    "mocha-lcov-reporter": "~0.0.x"
+  "engines": {
+    "node": "0.10.x"
   },
+  "name": "dochub-backend",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
     "start": "nodemon server.js",
     "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/neiesc/dochub.git"
+  },
+  "dependencies": {
+    "express": "~3.3.x",
+    "requirejs": "~2.1.x",
+    "underscore": "~1.5.x"
+  },
+  "devDependencies": {
+    "mocha": "~1.9.x",
+    "mocha-lcov-reporter": "~0.0.x"
   }
 }

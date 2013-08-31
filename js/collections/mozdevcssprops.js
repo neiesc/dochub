@@ -1,1 +1,39 @@
-define(["jQuery","Underscore","Backbone","models/sectionscrape"],function(a,b,c,d){var e=new RegExp("^(\\W*)(.+)$"),f=c.Collection.extend({url:"/data/css-mdn.json",model:d,comparator:function(a){var b=a.get("title"),c=e.exec(b),d=c[1],f=c[2];return d?"2"+b:f[0]===f[0].toLowerCase()?"0"+f:"1"+f}});return f})
+define([
+  'jQuery',
+  'Underscore',
+  'Backbone',
+  'models/sectionscrape'
+], function($, _, Backbone, SectionScrape) {
+
+  // Handle the following cases:
+  //  -xyz
+  //  ::-xyz
+  //  ::xyz
+  //  :xyz
+  //  @xyz
+  //  <xyz>
+  var cssPropsPattern = new RegExp("^(\\W*)(.+)$");
+
+  var MozDevCSSProps = Backbone.Collection.extend({
+    url: '../../data/css-mdn.json',
+    model: SectionScrape,
+
+    comparator: function(model) {
+      var title = model.get('title');
+      var results = cssPropsPattern.exec(title);
+      var prefix = results[1];
+      var name   = results[2];
+
+      if (prefix) {
+        return '2' + title;
+      } else if (name[0] === name[0].toLowerCase()) {
+        return '0' + name;
+      } else {
+        return '1' + name;
+      }
+    },
+
+  });
+
+  return MozDevCSSProps;
+});

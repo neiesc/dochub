@@ -2,6 +2,8 @@
 ======================
 
 [![Build Status](https://travis-ci.org/neiesc/dochub.png?branch=master)](https://travis-ci.org/neiesc/dochub)
+[![Coverage Status](https://coveralls.io/repos/neiesc/dochub/badge.png)](https://coveralls.io/r/neiesc/dochub)
+[![Dependency Status](https://gemnasium.com/neiesc/dochub.png)](https://gemnasium.com/neiesc/dochub)
 <br />[DocHub](http://neiesc.github.io/dochub/) on GitHub Pages
 
 ## Running locally
@@ -20,11 +22,7 @@ The `static/data/` directory contains our scrape of the sites we get content fro
 
     cd scraper
     npm install # downloads dependencies for scrapers
-    (cd css-mdn;  node scrape.js)
-    (cd html-mdn; node scrape.js)
-    (cd js-mdn;   node scrape.js)
-    (cd dom-mdn;  node scrape.js)
-    (cd jquery;   node scrape.js)
+    node you-scrape.js
 
 ## Notes
 

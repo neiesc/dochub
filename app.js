@@ -30,7 +30,7 @@ define([
       if ( app ) return;
 
       console.log('INITIALIZING APP');
-      app = express.createServer();
+      app = express();
       app.listen(config.app_port);
 
       app.configure(function() {

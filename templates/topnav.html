@@ -1,0 +1,25 @@
+<!-- nav -->
+<div class="navbar-inner">
+  <div class="container-fluid">
+    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </a>
+    <i class="icon-book icon-light brand" title="DocHub"></i>
+    <div class="nav-collapse">
+      <ul id="nav-list" class="nav">
+	<% for (var i = 0; i < settings.languages.length; i++) { %>
+	  <li><a id="nav-<%= settings.languages[i].lang %>" data-lang="<%= settings.languages[i].lang %>" class="pointer"><%= settings.languages[i].name %></a></li>
+	<% } %>
+      </ul>
+      <ul id="secondary-nav" class="nav pull-right">
+	<li><a class="icon-github-alt brand" target="_blank" href="https://github.com/neiesc/dochub" title="GitHub Forked"></a></li>
+	<li><a class="icon-github-alt brand" target="_blank" href="http://www.github.com/rgarcia/dochub" title="GitHub"></a></li>
+        <li><a class="icon-twitter brand" target="_blank" href="http://www.twitter.com/documenthub" title="Twitter" ></a></li>
+        <li><a class="icon-info brand" href="#about" title="About"></a></li>
+        <li><a class="icon-user brand" href="javascript: void(0);" onclick="USR.Main.show(); return false;" title="Feedback"></a></li>
+      </ul>
+    </div>
+  </div>
+</div>

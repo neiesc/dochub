@@ -1,0 +1,1 @@
+define(["jQuery","Underscore","Backbone","models/pagescrape"],function(a,b,c,d){var e=c.Collection.extend({model:d});return e})

@@ -1,0 +1,1 @@
+define(["jQuery","Underscore","Backbone","models/sectionscrape"],function(a,b,c,d){var e=c.Collection.extend({url:"/data/dom-mdn.json",model:d,comparator:function(a){var b=a.get("title");return b[0]===b[0].toLowerCase()?"0"+b:"1"+b}});return e})

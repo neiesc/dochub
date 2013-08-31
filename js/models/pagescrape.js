@@ -1,0 +1,1 @@
+define(["jQuery","Backbone"],function(a,b){var c=b.Model.extend({defaults:{url:"",title:"",html:"",searchableItems:[],mainVisible:!1}});return c})

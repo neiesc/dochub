@@ -1,0 +1,1 @@
+define(["order!libs/backbone/backbone-min"],function(){return _.noConflict(),$.noConflict(),Backbone.noConflict()})

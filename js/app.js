@@ -1,0 +1,1 @@
+define(["jQuery","Underscore","Backbone","router"],function(a,b,c,d){var e=function(){window.applicationCache.addEventListener("updateready",function(a){window.applicationCache.swapCache(),confirm("A new version of this DocHub is available. Load it?")&&window.location.reload()},!1),d.initialize()};return{initialize:e}})

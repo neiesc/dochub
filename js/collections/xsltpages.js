@@ -1,0 +1,1 @@
+define(["jQuery","Underscore","Backbone","collections/pagescrapes"],function(a,b,c,d){var e=d.extend({url:"/data/xslt-w3.json"});return e})

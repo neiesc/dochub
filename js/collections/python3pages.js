@@ -1,0 +1,1 @@
+define(["jQuery","Underscore","Backbone","models/sectionscrape"],function(a,b,c,d){var e=c.Collection.extend({url:"/data/python3.json",model:d,comparator:function(a){return a.get("title")}});return e})

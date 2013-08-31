@@ -1,0 +1,1 @@
+define(["jQuery","Underscore","Backbone"],function(a,b,c){var d=c.Model.extend({idAttribute:"_id",defaults:{title:"",htmlEscapedTitle:"",url:"",sectionNames:[],sectionHTMLs:[],lowerCaseTitle:"",tocVisible:!1,mainVisible:!1},initialize:function(){var b=a("<div/>").html(this.get("title")).text();this.set({htmlEscapedTitle:b,lowerCaseTitle:b.toLowerCase()},{silent:!0})}});return d})

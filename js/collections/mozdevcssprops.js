@@ -1,0 +1,1 @@
+define(["jQuery","Underscore","Backbone","models/sectionscrape"],function(a,b,c,d){var e=new RegExp("^(\\W*)(.+)$"),f=c.Collection.extend({url:"/data/css-mdn.json",model:d,comparator:function(a){var b=a.get("title"),c=e.exec(b),d=c[1],f=c[2];return d?"2"+b:f[0]===f[0].toLowerCase()?"0"+f:"1"+f}});return f})

@@ -1,0 +1,1 @@
+define(["jQuery","Backbone"],function(a,b){var c=b.Model.extend({defaults:{name:"",domId:"",page:null,lowerCaseTitle:"",tocVisible:!1},initialize:function(){this.set({lowerCaseTitle:this.get("name").toLowerCase()})}});return c})

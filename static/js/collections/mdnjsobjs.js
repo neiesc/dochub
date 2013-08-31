@@ -6,7 +6,7 @@ define([
 ], function($, _, Backbone, SectionScrape) {
 
   var MDNJsObj = Backbone.Collection.extend({
-    url: '/data/js-mdn.json',
+    url: 'data/js-mdn.json',
     model: SectionScrape,
 
     comparator: function(model) {

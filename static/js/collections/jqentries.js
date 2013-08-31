@@ -8,7 +8,7 @@ define([
   var jqEntryPattern = new RegExp("^(\\W*)(.+)$");
 
   var JQEntry = Backbone.Collection.extend({
-    url: '/data/jquery.json',
+    url: 'data/jquery.json',
     model: SectionScrape,
 
     comparator: function(model) {

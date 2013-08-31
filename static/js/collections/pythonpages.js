@@ -6,7 +6,7 @@ define([
 ], function($, _, Backbone, PageScrapes) {
 
   var PythonPages = PageScrapes.extend({
-    url: '/data/python.json'
+    url: 'data/python.json'
   });
 
   return PythonPages;

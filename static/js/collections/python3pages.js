@@ -6,7 +6,7 @@ define([
 ], function($, _, Backbone, SectionScrape) {
 
   var Python3Pages = Backbone.Collection.extend({
-    url: '/data/python3.json',
+    url: 'data/python3.json',
     model: SectionScrape,
 
     comparator: function(model) {

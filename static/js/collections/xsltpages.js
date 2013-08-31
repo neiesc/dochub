@@ -6,7 +6,7 @@ define([
 ], function($, _, Backbone, PageScrapes) {
 
   var XsltElements = PageScrapes.extend({
-    url: '/data/xslt-w3.json'
+    url: 'data/xslt-w3.json'
   });
 
   return XsltElements;

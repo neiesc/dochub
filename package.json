@@ -19,7 +19,7 @@
     "underscore": "~1.5.x"
   },
   "devDependencies": {
-    "mocha": "~1.9.x",
+    "mocha": "~1.12.x",
     "mocha-lcov-reporter": "~0.0.x"
   }
 }

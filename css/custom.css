@@ -1,27 +1,34 @@
 .container-fluid {
-  
+  /* so that scroll bar for content area goes all the way to the right */
   padding-right: 0px;
 }
+
 .pointer {
   cursor: pointer;
 }
+
 #search-box {
   width: 90%;
   margin: 0px 10px 5px 10px;
 }
+
 #search-results > div {
   width: 97%;
 }
+
 div#about table tr td.logo {
   width: 150px;
 }
+
 div#about table tr td.desc {
   vertical-align: middle;
 }
- 
+
+/* twitter bootstrap default is 1px too short */ 
 .nav-list {
   padding-right: 15px;
 }
+
 p.source-link {
   border-width: 1px;
   border-color: #888;
@@ -30,26 +37,36 @@ p.source-link {
   padding: 6px;
   border-radius: 3px;
 }
+
 td.logo {
   padding: 10px 5px;
   vertical-align: top;
 }
+
+/* ky's eyes have trouble scanning left to right */
 #search-results > div {
   max-width: 700px;
 }
+
+
+/* From MDN site (needed to make HTML element attributes section look the same) */
+
 .pageText code, .pageText tt {
   font: 100% "Courier New", "Andale Mono", monospace;
   font-weight: inherit;
   background-color: transparent;
 }
+
 .pageText code a {
   color: #333;
 }
+
 .pageText dd {
   margin: 0 0 .5em 22px;
   margin-bottom: .5em;
   padding-left: 15px;
 }
+
 div.note {
   margin-bottom: 1.286em;
   border: solid #DDDAAA;
@@ -58,26 +75,35 @@ div.note {
   color: #5D5636;
   border-width: 1px 0;
 }
+
 div#toc-well {
   overflow-y: hidden;
 }
+
 div#search-results {
   overflow-x: hidden;
   overflow-y: auto;
 }
+
 html {
   overflow-y: auto;
 }
+
 #secondary-nav iframe {
   margin-top: 10px;
 }
+
 #secondary-nav li {
   padding-left: 10px;
   padding-right: 10px;
 }
+
 div#about {
   display: none;
 }
+
+/* Taken from jquery.com style.css */
+
 .entry-content .entry-title{
   padding: 5px 10px 5px 10px;
   background: #fafafa;
@@ -89,6 +115,7 @@ div#about {
   padding-left: 20px;
   background: #fafafa;
   border: 1px solid #aaa;
+/*  margin: -26px 0 0 0;*/
   padding-top: 10px;
 }
 .jq-primaryContent .toc ul {
@@ -100,13 +127,13 @@ div#about {
   padding: 0 0 6px;
   font-weight: normal;
   border: none;
-  
+  /* margin-top: -32px; */
 }
 .jq-primaryContent .b-wrap .toc h4 {
   margin-top: 0;
 }
 .jq-primaryContent .toc h4 span {
-  
+  /* background: #fff; */
 }
 .toc ul.toc-list {
   margin-left: 0;
@@ -119,13 +146,15 @@ div#about {
 .toc ul.toc-list ul li a{
   background: url(images/down-arrow.png) no-repeat 0px 3px;
 }
+
 .jq-primaryContent p{
   font-size: 1em;
   margin: .5em 0;
   color: #222;
 }
+
 .jq-primaryContent p.image {
-  margin: 1em 1.61803399em; 
+  margin: 1em 1.61803399em; /*Thanks fibinocci!*/
   padding: 2em 0;
   text-align: center;
   background: #fff;
@@ -137,6 +166,7 @@ div#about {
 .jq-primaryContent .four-across img {
   width: 120px;
 }
+
 .jq-primaryContent .toc ul.toc-list a{
   font-size: 1em;
   color: #444444;
@@ -149,6 +179,7 @@ div#about {
 .jq-primaryContent .toc ul.toc-list li ul li a{
   font-size: 1em;
 }
+
 .toc ul.toc-list ul{
   margin-left: 2em;
 }
@@ -157,15 +188,18 @@ div#about {
   margin-top: 3px;
   margin-bottom: 3px;
 }
+
 .entry .longdesc,
 .entry .download{
   padding: 0 20px
 }
+
 table.listing,
 table.listing {
   border: 1px solid #ccc;
   border-width: 1px 0 0 1px;
 }
+
 table.listing th,
 table.listing td {
   border: 1px solid #ccc;
@@ -177,6 +211,16 @@ table.listing td {
   font-style: italic;
   font-weight: normal;
 }
+/*.jq-primaryContent .entry h2{
+  background: #777;
+  color: #fff;
+  padding: 6px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  margin: 2em 0 0 0;
+  font-size: 1.1em;
+}*/
 .jq-primaryContent .section-title{
   border: none;
   background: #0D5995;
@@ -239,7 +283,9 @@ code{
   margin: 0 0 6px 0;
   padding: 0 0 0px 0;
   border-bottom: 1px solid #BBBBBB;
+
 }
+
 .jq-primaryContent h1.category-title {
   -webkit-border-radius-topleft: 4px;
   -webkit-border-radius-topright: 4px;
@@ -266,6 +312,13 @@ ul.plugin-name-list {
   font-size: 1.1em;
   font-weight: bold;
 }
+
+/*
+.jq-primaryContent #method-list li a.title-link:hover {
+  background: #ddd;
+}
+*/
+
 .jq-primaryContent h2.plugin-header {
   margin: -5px -10px;
   padding: .2em 1em;
@@ -298,6 +351,7 @@ li.withoutfocus{background: none}
 display: inline;
 margin: 0
 }
+
 .jq-primaryContent li span.entry-meta {
   background:#EEEEEE none repeat scroll 0 0;
   float:right;
@@ -305,6 +359,8 @@ margin: 0
   margin:-27px -4px 0 0;
   padding:4px;
 }
+
+
 .jq-primaryContent #method-list li p,
 .jq-primaryContent .method-list li p{
 padding: 0;
@@ -313,6 +369,7 @@ font-size: 1em;
 clear: both;
 font-style: italic;
 }
+
 .banner {
   float: left;
   width: 50%;
@@ -331,11 +388,13 @@ font-style: italic;
 .beta[title] {
   cursor: help;
 }
+
 .jq-primaryContent div.entry-meta{
   text-align: right;
   margin: 5px;
   font-size: 1em;
 }
+
 #jq-interiorNavigation h2 a, #jq-interiorNavigation h2 a:hover{
   background: transparent;
   border: none;
@@ -347,6 +406,7 @@ font-style: italic;
 .jq-primaryContent h2 a.title-link {
   display: block
 }
+
 .jq-primaryContent .entry-details p.desc strong{
   color: #333
 }
@@ -363,6 +423,7 @@ font-style: italic;
 .jq-primaryContent span.returns a{
   color: #fff;
 }
+
 .jq-primaryContent h4.name {
   font-size: 1.2em;
   border-bottom: 1px solid #b1b1b1;
@@ -373,15 +434,18 @@ font-style: italic;
   padding-left: 2em;
   font-size: 1em;
 }
+
 .jq-primaryContent ul.signatures {
   margin: 1em 19px 1.1em 19px;
   background: #eee;
   padding: 10px;
   list-style: none;
 }
+
 .jq-primaryContent ul.signatures p.arguement strong {
   margin-right: 5px
 }
+
 .jq-primaryContent h5 {
   font-size: 1em;
   line-height: 1;
@@ -396,7 +460,9 @@ font-style: italic;
   margin: 1em 0;
   padding: 0 1px;
 }
+
 .jq-primaryContent div.longdesc ul {
+/*  margin: 0 2em;*/
 font-size: 1em;
 padding-left: 1.1em;
 list-style: disc outside none;
@@ -428,15 +494,18 @@ list-style: disc outside none;
 .jq-primaryContent div.entry-examples h4 span.desc{
   font-size: .75em;
 }
+
 .jq-primaryContent div.entry-examples pre {
 margin-bottom: 1em
 }
 .jq-primaryContent div.entry-examples .demo{
   margin-bottom: 2em;
 }
+
 .jq-primaryContent li.signature {
   margin: 0 0 1.1em 0;
 }
+
 .jq-primaryContent .signatures h4 {
   margin: .2em 0 0 0;
 }
@@ -458,6 +527,7 @@ margin-bottom: 1em
 ul.categories{
   margin: 0 0 4em 0;
 }
+
 #jq-content pre {
   padding: 10px;
   overflow-x: auto;
@@ -468,6 +538,7 @@ ul.categories{
   border-radius: 2px;
   margin: 0px
 }
+
 .demo {
   padding: 5px;
   background-color: #e3e4e5;
@@ -476,11 +547,15 @@ ul.categories{
   -moz-border-radius: 2px;
   border-radius: 2px;
 }
+
+
 #access{display: none;}
+
 .versionAdded {
   float: right;
   font-size: .8em;
 }
+
 span.output {
   color: #090;
   font-weight: bold;
@@ -543,6 +618,7 @@ span.output {
 .jq-primaryContent .options p {
   font-size: 1.1em;
 }
+
 .jq-primaryContent .dsq-comment-message pre,
 .jq-primaryContent .dsq-comment-message pre code {
   font-size: 1em;
@@ -579,6 +655,7 @@ span.output {
   background-color: #ffe3e3;
   border: 1px solid #900;
 }
+
 .jq-primaryContent .success-summary {
   margin-top: 20px;
   padding: .5em;
@@ -586,6 +663,7 @@ span.output {
   background-color: #e3ffe3;
   border: 1px solid #070;
 }
+
 #disqus_thread {
 margin-bottom:32px !important;
 }
@@ -600,11 +678,15 @@ margin-bottom:32px !important;
 .sideBarFeature a{
   padding: 0px 29px 5px 0px !important;
 }
+
 .sideBarFeature strong{
   background: #fff;
   position:relative;
   top: -2px;
 }
+
+
+/* PHP */
 div.phpcode {
   background-color: #CCC;
   border-width: 1px;
@@ -613,15 +695,21 @@ div.phpcode {
   font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", Monaco, "Courier New", Courier, monospace;
   font-size: 14px;
 }
+
 div.phpcode code {
   background-color: #CCC;
 }
+
+/* Taken from w3.org/TR/xslt W3C-REC.css */
+
 div.w3 {
   font-family: sans-serif;
 }
+
 div.w3 p {
   font-size: 14px;
 }
+
 div.w3 code {
   font-family: monospace;
   font-size: 14px;
@@ -630,29 +718,37 @@ div.w3 code {
   padding: 0;
   color: black;
 }
+
 div.w3 code pre {
   font-size: 14px;
 }
+
 div.w3 p.element-syntax {
   border: solid thin;
 }
+
 div.w3 pre {
   margin-top: 13px;
   margin-bottom: 13px;
   margin-left: 2em;
   background-color: transparent;
 }
+
 div.w3 strong, b {
   font-size: 14px;
 }
+
 div.w3 blockquote {
   font-size: 14px;
   line-height: 18px;
   border: 0;
 }
+
 div.w3 li {
   color: black;
 }
+
+/* mdn compatibility tables */
 .htab { display: none; }
 table.compat-table { border: 1px solid #bbb; border-collapse: collapse;}
 table.compat-table td { padding: 5px; border: 1px solid #ccc; text-align: left; background: #fff; vertical-align: top; word-wrap: break-word; }

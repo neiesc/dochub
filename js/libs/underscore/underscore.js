@@ -1,1 +1,3 @@
-define(["order!libs/underscore/underscore-min"],function(){return _})
+define(['order!libs/underscore/underscore-min'], function(){
+  return _;
+});

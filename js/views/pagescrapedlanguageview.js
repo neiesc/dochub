@@ -1,1 +1,183 @@
-define(["jQuery","Underscore","Backbone","models/pageelement","collections/pageelements","views/pagetocbar","views/pagesearchheader","views/searchresults","views/pagesearchresults","text!templates/tocpagescraperesult.html","text!templates/page.html"],function(a,b,c,d,e,f,g,h,i,j,k){var l=c.View.extend({initialize:function(){b.bindAll(this,"render","setActive","setQuery"),this.active=!1,this.languageName=this.options.languageName,this.$searchResultsDiv=a("#search-results");var c=this.options.mainSearchResultsView?this.options.mainSearchResultsView:i;this.mainResultsView=new c({el:"#search-results",collection:this.collection,itemTemplate:k,visibleField:"mainVisible",languageName:this.languageName,spinner:!0}),this.createAndRenderViews=b.once(function(){this.pageElements=new e;var a={};for(var b=0;b<this.collection.length;++b){var c=this.collection.at(b),i=c.get("searchableItems");for(var k=0;k<i.length;++k){var l=i[k];this.pageElements.add(new d({domId:l.domId,name:l.name,page:c}),{silent:!0}),a[l.name]=c}}console.log("[Rendering "+this.languageName+".]"),this.tocBarView=new f({el:"#toc",collection:this.collection,nameToPageMap:a,languageName:this.languageName}),this.searchHeaderView=new g({el:"#search-header",pages:this.collection,pageElements:this.pageElements,nameToPageMap:a,placeholder:this.options.placeholder,languageName:this.languageName,debounceTime:this.options.debounceTime,minQueryLength:this.options.minQueryLength});var m=this.options.tocSearchResultsView?this.tocSearchResultsView:h;this.tocResultsView=new m({el:"#toc-results",collection:this.pageElements,itemTemplate:j,languageName:this.languageName,visibleField:"tocVisible"}),this.tocResultsView.render()})},render:function(){return this.searchHeaderView&&this.searchHeaderView.render(),this},setActive:function(a){console.log("[setActive: "+this.languageName+" = "+a+".]");if(a&&!this.active){this.render(),this.$searchResultsDiv.addClass(this.options.resultsClassNames);if(this.collection.length>0)this.searchHeaderView.addBindings(),this.tocBarView.addBindings(),this.searchHeaderView.onSearch(),this.active=!0;else{console.log("[Fetching "+this.languageName+".]"),this.mainResultsView.startSpinner();var b=this;this.collection.fetch({success:function(a,c){console.log("[Success fetching "+b.languageName+".]"),b.createAndRenderViews(),b.searchHeaderView.lastQuery=null,b.searchHeaderView.onSearch(),b.mainResultsView.spinner.stop(),b.lastQuery&&b.setQuery(b.lastQuery),b.active=!0}})}}else!a&&this.active&&(this.searchHeaderView.removeBindings(),this.tocBarView.removeBindings(),this.collection.each(function(a){a.set({mainVisible:!1})}),this.pageElements&&this.pageElements.each(function(a){a.set({tocVisible:!1})}),this.active=!1,this.searchHeaderView.lastQuery=null,this.$searchResultsDiv.removeClass(this.options.resultsClassNames))},setQuery:function(a){b.isUndefined(this.searchHeaderView)?this.lastQuery=a:(this.searchHeaderView.$("#search-box").val(a),this.searchHeaderView.onSearch())}});return l})
+define([
+  'jQuery',
+  'Underscore',
+  'Backbone',
+
+  // Models
+  'models/pageelement',
+  
+  // Collection
+  'collections/pageelements',
+
+  // Views
+  'views/pagetocbar',
+  'views/pagesearchheader',
+  'views/searchresults',
+  'views/pagesearchresults',
+
+  // Templates
+  'text!templates/tocpagescraperesult.html',
+  'text!templates/page.html',
+], function($, _, Backbone,
+            PageElement, PageElements,
+            PageTOCBarView, PageSearchHeaderView, SearchResultsView, PageSearchResultsView,
+            tocResultTemplate, pageTemplate) {
+
+  var PageScrapedLanguageView = Backbone.View.extend({
+    initialize: function() {
+      _.bindAll(this, 'render', 'setActive', 'setQuery');
+
+      this.active = false;
+
+      this.languageName = this.options.languageName;
+
+      // Save for later
+      this.$searchResultsDiv = $('#search-results');
+
+      var mainSearchResultsView = this.options.mainSearchResultsView
+        ? this.options.mainSearchResultsView
+        : PageSearchResultsView;
+      this.mainResultsView = new mainSearchResultsView({
+        el: '#search-results',
+        collection:   this.collection,
+        itemTemplate: pageTemplate,
+        visibleField: 'mainVisible',
+        languageName  : this.languageName,
+        spinner: true
+      });
+
+      this.createAndRenderViews = _.once(function() {
+        this.pageElements  = new PageElements();
+        var nameToPageMap = {};
+        for (var i = 0; i < this.collection.length; ++i) {
+          var page = this.collection.at(i);
+          var searchableItems = page.get('searchableItems');
+          for (var j = 0; j < searchableItems.length ; ++j) {
+            var item = searchableItems[j];
+            this.pageElements.add(new PageElement({
+              domId : item.domId,
+              name  : item.name,
+              page  : page,
+            }), {silent : true});
+            nameToPageMap[item.name] = page;
+          }
+        }
+
+        console.log('[Rendering ' + this.languageName + '.]');
+
+        this.tocBarView = new PageTOCBarView({
+          el            : '#toc',
+          collection    : this.collection,
+          nameToPageMap : nameToPageMap,
+          languageName  : this.languageName
+        });
+
+        this.searchHeaderView = new PageSearchHeaderView({
+          el: '#search-header',
+          pages          : this.collection,
+          pageElements   : this.pageElements,
+          nameToPageMap  : nameToPageMap,
+          placeholder    : this.options.placeholder,
+          languageName   : this.languageName,
+          debounceTime   : this.options.debounceTime,
+          minQueryLength : this.options.minQueryLength
+        });
+
+        var tocSearchResultsView = this.options.tocSearchResultsView
+          ? this.tocSearchResultsView
+          : SearchResultsView;
+        this.tocResultsView = new tocSearchResultsView({
+          el            : '#toc-results',
+          collection    : this.pageElements,
+          itemTemplate  : tocResultTemplate,
+          languageName  : this.languageName,
+          visibleField  : 'tocVisible'
+        });
+        this.tocResultsView.render();
+
+      });
+    },
+
+    render: function() {
+      if (this.searchHeaderView) {
+        this.searchHeaderView.render(); // Need to do this to change the placeholder 
+      }
+      return this;
+    },
+
+    setActive: function(active) {
+      console.log('[setActive: ' + this.languageName + ' = ' + active + '.]');
+
+      if (active && !this.active) {
+        this.render();
+        this.$searchResultsDiv.addClass(this.options.resultsClassNames);
+
+        if (this.collection.length > 0) {
+
+          // (Re)bind events
+          this.searchHeaderView.addBindings();
+          this.tocBarView.addBindings();
+
+          this.searchHeaderView.onSearch();
+          this.active = true;
+        } else {
+          console.log('[Fetching ' + this.languageName + '.]');
+
+          this.mainResultsView.startSpinner();
+          var self = this;
+          this.collection.fetch({
+            success: function(coll, resp) {
+              console.log('[Success fetching ' + self.languageName + '.]');
+
+              self.createAndRenderViews();    // _.once'd
+
+              self.searchHeaderView.lastQuery = null; // TODO: use abstractions
+              self.searchHeaderView.onSearch();
+              self.mainResultsView.spinner.stop();
+
+              if (self.lastQuery) {
+                self.setQuery(self.lastQuery);
+              }
+              
+              self.active = true;
+            }
+          });
+        }
+      } else if (!active && this.active) {
+        // Unbind events
+        this.searchHeaderView.removeBindings();
+        this.tocBarView.removeBindings();
+
+        // Hide everything
+        this.collection.each(function(model) {
+          model.set({ mainVisible: false });
+        });
+        if (this.pageElements) {
+          this.pageElements.each(function(model) {
+            model.set({ tocVisible: false });
+          });
+        }
+        this.active = false;
+
+        // Necessary so toc is displayed when clicking back to a language
+        this.searchHeaderView.lastQuery = null;
+
+        // Remove css styles
+        this.$searchResultsDiv.removeClass(this.options.resultsClassNames);
+      }
+    },
+
+    setQuery: function(query) {
+      if (_.isUndefined(this.searchHeaderView)) {
+        this.lastQuery = query;
+      } else {
+        this.searchHeaderView.$('#search-box').val(query);
+        this.searchHeaderView.onSearch();
+      }
+    },
+
+  });
+
+  return PageScrapedLanguageView;
+});
+

@@ -1,1 +1,14 @@
-define(["jQuery","Underscore","Backbone","models/pagescrape"],function(a,b,c,d){var e=c.Collection.extend({model:d});return e})
+define([
+  'jQuery',
+  'Underscore',
+  'Backbone',
+  'models/pagescrape'
+], function($, _, Backbone, PageScrape) {
+
+  var PageScrapes = Backbone.Collection.extend({
+    model: PageScrape
+  });
+
+  return PageScrapes;
+});
+

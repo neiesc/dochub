@@ -1,1 +1,3 @@
-define(["order!libs/spin/spin.min"],function(){return Spinner})
+define(['order!libs/spin/spin.min'], function() {
+  return Spinner;
+});

@@ -1,1 +1,44 @@
-define(["jQuery","Underscore","Backbone","views/searchresults"],function(a,b,c,d){var f=d.extend({events:{"click a":"onClickAnchor"},initialize:function(){b.bindAll(this,"render","startSpinner","onClickAnchor"),this.collection.bind("reset",this.render),this.$searchResults=a("#search-results")},onClickAnchor:function(b){if(e.button>0)return;if(e.ctrlKey||e.metaKey||e.shiftKey||e.altKey)return;var c=this.$(b.currentTarget),d=c.attr("href");if(d.charAt(0)==="#"){var f=this.$searchResults.scrollTop(),g=a("#"+d).offset().top;this.$searchResults.scrollTop(f+g-60),b.stopPropagation(),b.preventDefault()}}});return f})
+define([
+  'jQuery',
+  'Underscore',
+  'Backbone',
+  'views/searchresults'
+], function($, _, BackBone, SearchResultsView) {
+
+  // the results view is just tied to a collection and re-renders itself
+  var PageSearchResultsView = SearchResultsView.extend({
+
+    events: {
+      'click a' : 'onClickAnchor'
+    },
+
+    initialize: function() {
+      _.bindAll(this, 'render', 'startSpinner', 'onClickAnchor');
+      this.collection.bind('reset', this.render);
+      this.$searchResults = $('#search-results');
+    },
+
+    onClickAnchor: function(evt) {
+      if (e.button > 0)
+        return;
+      if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey)
+        return;
+
+      var $anchor = this.$(evt.currentTarget);
+      var href = $anchor.attr('href');
+
+      if (href.charAt(0) === '#') {
+        // Internal link
+        var searchResultsTopVal = this.$searchResults.scrollTop();
+        var topVal = $('#' + href).offset().top; // ID selection is the fastest
+        this.$searchResults.scrollTop(searchResultsTopVal + topVal - 60);
+        evt.stopPropagation();
+        evt.preventDefault();
+      }
+    },
+
+  });
+
+  return PageSearchResultsView;
+});
+

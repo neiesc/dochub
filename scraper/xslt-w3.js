@@ -12,7 +12,7 @@ requirejs([
   var spidey = spider();
 
   // file where we'll dump the json
-  var filename = path.dirname(__filename) + '/../../static/data/xslt-w3.json';
+  var filename = path.dirname(__filename) + '/../static/data/xslt-w3.json';
   console.log('[Dumping to ' + filename + '.]');
   var file = fs.openSync(filename, 'w');
 

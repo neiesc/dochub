@@ -5,7 +5,7 @@ requirejs([
   'spider',
   'underscore',
   'cheerio',
-  '../../models/sectionscrape',
+  '../models/sectionscrape',
   'path',
   'fs'
 ], function(step, spider, _, cheerio, SectionScrape, path, fs) {
@@ -15,7 +15,7 @@ requirejs([
   var spidey = spider();
 
   // file where we'll dump the json
-  var filename = path.dirname(__filename) + '/../../static/data/jquery.json';
+  var filename = path.dirname(__filename) + '/../static/data/jquery.json';
   console.log('dumping to ' + filename);
   var file = fs.openSync(filename,'w');
 

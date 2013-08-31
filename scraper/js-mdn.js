@@ -4,7 +4,7 @@ requirejs([
   'spider',
   'underscore',
   'cheerio',
-  '../../models/sectionscrape',
+  '../models/sectionscrape',
   'path',
   'fs'
 ], function(spider, _, cheerio, SectionScrape, path, fs) {
@@ -22,7 +22,7 @@ requirejs([
   };
 
   // file where we'll dump the json
-  var filename = path.dirname(__filename) + '/../../static/data/js-mdn.json';
+  var filename = path.dirname(__filename) + '/../static/data/js-mdn.json';
   console.log('dumping to ' + filename);
   var file = fs.openSync(filename,'w');
 

@@ -3,7 +3,7 @@ var requirejs = require('requirejs');
 requirejs([
   'spider',
   'underscore',
-  '../../models/sectionscrape',
+  '../models/sectionscrape',
   'path',
   'fs'
 ], function(spider, _, SectionScrape, path, fs) {
@@ -88,7 +88,7 @@ requirejs([
   });
 
   // File where we'll dump the json
-  var filename = path.dirname(__filename) + '/../../static/data/php-ext.json';
+  var filename = path.dirname(__filename) + '/../static/data/php-ext.json';
   console.log('[Dumping to ' + filename + '.]');
   var file = fs.openSync(filename, 'w');
 

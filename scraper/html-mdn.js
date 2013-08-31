@@ -5,7 +5,7 @@ requirejs([
   'spider',
   'underscore',
   'cheerio',
-  '../../models/sectionscrape',
+  '../models/sectionscrape',
   'path',
   'fs'
 ], function(step, spider, _, cheerio, SectionScrape, path, fs) {
@@ -23,28 +23,25 @@ requirejs([
   };
 
   // file where we'll dump the json
-  var filename = path.dirname(__filename) + '/../../static/data/dom-mdn.json';
+  var filename = path.dirname(__filename) + '/../static/data/html-mdn.json';
   console.log('dumping to ' + filename);
   var file = fs.openSync(filename,'w');
 
-  // main index of mdn's dom docs
-  spidey.route('developer.mozilla.org', '/en/Gecko_DOM_Reference', function ($) {
+  // main index of mdn's html docs
+  spidey.route('developer.mozilla.org', '/en/HTML/Element', function ($) {
     visitLinks($);
   });
 
   var blacklist = [
-    // 'https://developer.mozilla.org/en/Gecko_DOM_Reference'
+    // 'https://developer.mozilla.org/en/HTML/Element'
   ];
 
   // some urls redirect to other pages w/o changing the url (for example: https://developer.mozilla.org/en/CSS/-moz-scrollbars-none)
   // so in addition to not visiting the same url twice, keep this list to prevent visiting the same title twice
   var titles = [];
 
-  // Need to lowercase titles that match anything in here, b/c MDN doc is inconsistent.
-  var titleRegexes = [ /^Document\./, /^Element\./ ];
-
-  spidey.route('developer.mozilla.org', /\/en\/DOM\/*/, function ($, url) {
-    if ( _.include(blacklist,url) ) return;
+  spidey.route('developer.mozilla.org', /\/en\/HTML\/Element\/*/, function ($, url) {
+    if ( _.indexOf(blacklist,url) !== -1 ) return;
     visitLinks($);
 
     console.log('---------');
@@ -54,17 +51,9 @@ requirejs([
     if ( title === '' || title === null ) {
       console.log('ERROR: could not get title, skipping');
       return;
-    } else if ( _.include(titles,title) ) {
+    } else if ( _.indexOf(titles,title) !== -1 ) {
       console.log('WARNING: already scraped something with this title, skipping');
       return;
-    }
-
-    var titleMatches = _.filter(titleRegexes, function(regex) {
-      return regex.test(title);
-    });
-    
-    if (titleMatches.length > 0) {
-      title = title[0].toLowerCase() + title.substr(1);
     }
 
     console.log('title:',title);
@@ -109,7 +98,7 @@ requirejs([
   });
 
   // start 'er up
-  spidey.get('https://developer.mozilla.org/en/Gecko_DOM_Reference').log('info');
+  spidey.get('https://developer.mozilla.org/en/HTML/Element').log('info');
 
   process.on('exit', function () {
     fs.writeSync(file,JSON.stringify(results,null,'\t'));

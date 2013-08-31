@@ -1,8 +1,8 @@
 # DocHub - speedy docs
-=====
+======================
 
 [![Build Status](https://travis-ci.org/neiesc/dochub.png?branch=master)](https://travis-ci.org/neiesc/dochub)
-[DocHub](http://neiesc.github.io/dochub/) on GitHub Pages
+<br />[DocHub](http://neiesc.github.io/dochub/) on GitHub Pages
 
 ## Running locally
 

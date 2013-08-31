@@ -1,7 +1,7 @@
 DocHub [![Build Status](https://travis-ci.org/neiesc/dochub.png?branch=master)](https://travis-ci.org/neiesc/dochub)
 =====
 
-[DocHub](neiesc.github.io/dochub/) on GitHub Pages
+[DocHub](http://neiesc.github.io/dochub/) on GitHub Pages
 
 # Running locally
 

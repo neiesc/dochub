@@ -5,10 +5,7 @@ define([
   './config',
   'fs'
 ], function (express, module, path, config, fs) {
-
   var app = null;
-
-  console.log(global.process.env);
 
   // can't serve cache manifest w/ express static since it doesn't set the header
   // correctly. so we'll load the file once, keep it in memory, serve it up manually

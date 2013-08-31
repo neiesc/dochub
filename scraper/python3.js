@@ -4,20 +4,18 @@ requirejs([
   'spider',
   'underscore',
   'cheerio',
-  '../../models/sectionscrape',
+  '../models/sectionscrape',
   'path',
   'fs'
 ], function(spider, _, cheerio, SectionScrape, path, fs) {
   /*#### config ####
    From:
-   http://docs.python.org/3.3/reference/
    http://docs.python.org/3.3/library/
   */
   var output_json = 'python3.json';
   
   var rootUrls = [
-    'http://docs.python.org/3.3/reference/',
-    'http://docs.python.org/3.3/library/',
+    'http://docs.python.org/3.3/library/'
   ];
   
   var lst_black = ['#'];
@@ -40,18 +38,13 @@ requirejs([
       spidey.get('http://docs.python.org/3.3/library/' + href); //TODO: alter to dynamic
     });
   }
-
-  spidey.route('docs.python.org', '/3.3/reference/', function ($, url) {
-    console.log('Scrape:', 'Skipping ' + url);
-  });
   
   spidey.route('docs.python.org', '/3.3/library/', function ($, url) {
     console.log('Scrape:', 'scraping:', url);
-    visitLinks($, 'a.reference');
+    visitLinks($, 'li.toctree-l1 a.reference');
   });
 
   spidey.route('docs.python.org', '/3.3/library/*.html', function ($, url) {
-    console.log(url);
     /*** Validation and testing. ***/
     if (!$('.section')[0]) { throw new ScrapeException("No sections..."); }
     if (_.include(lst_black, url)) { return; }
@@ -90,7 +83,7 @@ requirejs([
   process.on('exit', function () {
     if (_valid) {
       // file where we'll dump the json
-      var filename = path.dirname(__filename) + '/../../static/data/' + output_json;
+      var filename = path.dirname(__filename) + '/../static/data/' + output_json;
       console.log('Scrape:', 'Dumping to ' + filename + '');
       var file = fs.openSync(filename, 'w');
       fs.writeSync(file, JSON.stringify(result, null, '\t'));

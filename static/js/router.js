@@ -26,6 +26,7 @@ define([
   'collections/xsltpages',
   'collections/pythonpages',
   'collections/python3pages',
+  'collections/nodejspages',
 
   // Templates
   'text!templates/mdnpage.html',
@@ -35,7 +36,8 @@ define([
             FullWindowView,
             MozDevCSSPropCollection, MDNHtmlElementsCollection, MDNJsObjsCollection,
             MDNDomObjsCollection, PHPExtensionsCollection, JQEntriesCollection,
-            XSLTPagesCollection, PythonPagesCollection, Python3PagesCollection,
+            XSLTPagesCollection, PythonPagesCollection, 
+	    Python3PagesCollection, NodejsPagesCollection,
             MDNPage) {
 
   var DocHub = Backbone.Router.extend({
@@ -103,6 +105,14 @@ define([
           resultsClassNames: 'python3',
           collection: new Python3PagesCollection(),
           placeholder: 'Type a Python 3.3.2 class/function name',
+          debounceTime: 200,
+          minQueryLength: 3,
+        }),
+	'nodejs' : new LanguageView({
+          languageName: 'Nodejs',
+          resultsClassNames: 'nodejs',
+          collection: new NodejsPagesCollection(),
+          placeholder: 'Node.js v0.10.17 Manual & Documentation',
           debounceTime: 200,
           minQueryLength: 3,
         }),

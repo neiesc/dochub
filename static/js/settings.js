@@ -8,7 +8,9 @@ define([], function(){
       { lang: 'jquery', name: 'jQuery' },
       { lang: 'php', name: 'PHP' },
       { lang: 'python', name: 'Python' },
-      { lang: 'python3', name: 'Python3' }
+      { lang: 'python3', name: 'Python3' },
+      { lang: 'python3', name: 'Python3' },
+      { lang: 'nodejs', name: 'Node.js' }
     ]
   }
   return Settings;

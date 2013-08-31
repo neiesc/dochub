@@ -1,18 +1,1 @@
-define([
-  'jQuery',
-  'Underscore',
-  'Backbone',
-  'models/sectionscrape'
-], function($, _, Backbone, SectionScrape) {
-
-  var PhpExt = Backbone.Collection.extend({
-    url: 'data/php-ext.json',
-    model: SectionScrape,
-
-    comparator: function(model) {
-      return model.get('title').toLowerCase();
-    },
-  });
-
-  return PhpExt;
-});
+define(["jQuery","Underscore","Backbone","models/sectionscrape"],function(a,b,c,d){var e=c.Collection.extend({url:"data/php-ext.json",model:d,comparator:function(a){return a.get("title").toLowerCase()}});return e})

@@ -1,18 +1,1 @@
-define([
-  'jQuery',
-  'Underscore',
-  'Backbone',
-  'models/pageelement'
-], function($, _, Backbone, PageElement) {
-
-  var PageElements = Backbone.Collection.extend({
-    model: PageElement,
-
-    comparator: function(model) {
-      return model.get('lowerCaseTitle');
-    }
-  });
-
-  return PageElements;
-});
-
+define(["jQuery","Underscore","Backbone","models/pageelement"],function(a,b,c,d){var e=c.Collection.extend({model:d,comparator:function(a){return a.get("lowerCaseTitle")}});return e})

@@ -1,5 +1,1 @@
-define([
-  'order!libs/jquery/jquery-min', 
-], function(){
-  return $;
-});
+define(["order!libs/jquery/jquery-min"],function(){return $})

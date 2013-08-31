@@ -1,14 +1,1 @@
-define([
-  'jQuery',
-  'Underscore',
-  'Backbone',
-  'collections/pagescrapes'
-], function($, _, Backbone, PageScrapes) {
-
-  var XsltElements = PageScrapes.extend({
-    url: 'data/xslt-w3.json'
-  });
-
-  return XsltElements;
-});
-
+define(["jQuery","Underscore","Backbone","collections/pagescrapes"],function(a,b,c,d){var e=d.extend({url:"data/xslt-w3.json"});return e})

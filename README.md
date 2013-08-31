@@ -1,9 +1,10 @@
-DocHub [![Build Status](https://travis-ci.org/neiesc/dochub.png?branch=master)](https://travis-ci.org/neiesc/dochub)
+# DocHub - speedy docs
 =====
 
+[![Build Status](https://travis-ci.org/neiesc/dochub.png?branch=master)](https://travis-ci.org/neiesc/dochub)
 [DocHub](http://neiesc.github.io/dochub/) on GitHub Pages
 
-# Running locally
+## Running locally
 
 * Download de [docfiles](https://github.com/neiesc/dochub/tree/gh-pages) `*.json` and paste in `static/data`
 * Run the server:
@@ -13,7 +14,7 @@ DocHub [![Build Status](https://travis-ci.org/neiesc/dochub.png?branch=master)](
         npm start
 * Open `http://localhost:5000/` in your browser.
 
-# Scraper
+## Scraper
 
 The `static/data/` directory contains our scrape of the sites we get content from. Right now we don't update this very often. If you want the most up-to-date content, you can run the scrapers:
 
@@ -25,7 +26,7 @@ The `static/data/` directory contains our scrape of the sites we get content fro
     (cd dom-mdn;  node scrape.js)
     (cd jquery;   node scrape.js)
 
-# Notes
+## Notes
 
 How to use the `r.js` optimizer:
 
@@ -33,3 +34,7 @@ How to use the `r.js` optimizer:
 
 Make sure the node server is serving the correct static folder
 (whether you want `/static` or `/static-build`).
+
+## License
+
+Licensed under the [GNU Affero General Public License](https://github.com/neiesc/dochub/blob/master/LICENSE).

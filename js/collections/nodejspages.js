@@ -6,7 +6,7 @@ define([
 ], function($, _, Backbone, SectionScrape) {
 
   var NodejsPages = Backbone.Collection.extend({
-    url: '/data/nodejs.json',
+    url: 'data/nodejs.json',
     model: SectionScrape,
 
     comparator: function(model) {

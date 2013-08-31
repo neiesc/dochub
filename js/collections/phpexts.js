@@ -6,7 +6,7 @@ define([
 ], function($, _, Backbone, SectionScrape) {
 
   var PhpExt = Backbone.Collection.extend({
-    url: '/data/php-ext.json',
+    url: 'data/php-ext.json',
     model: SectionScrape,
 
     comparator: function(model) {

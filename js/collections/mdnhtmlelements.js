@@ -10,7 +10,7 @@ define([
   var htmlElementPattern = new RegExp("^(\\W*)(.+)$");
 
   var MDNHtmlElemnts = Backbone.Collection.extend({
-    url: '/data/html-mdn.json',
+    url: 'data/html-mdn.json',
     model: SectionScrape,
 
   comparator: function(model) {

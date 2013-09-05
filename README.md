@@ -2,7 +2,6 @@
 ======================
 
 [![Build Status](https://travis-ci.org/neiesc/dochub.png?branch=master)](https://travis-ci.org/neiesc/dochub)
-[![Coverage Status](https://coveralls.io/repos/neiesc/dochub/badge.png)](https://coveralls.io/r/neiesc/dochub)
 [![Dependency Status](https://gemnasium.com/neiesc/dochub.png)](https://gemnasium.com/neiesc/dochub)
 <br />[DocHub](http://neiesc.github.io/dochub/) on GitHub Pages
 

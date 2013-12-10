@@ -15,9 +15,14 @@ requirejs([
 
   // use this to visit all links on a page
   var visitLinks = function($) {
-    $('a').each(function() {
+    $('a:not([class*=new])').each(function() {
       var href = $(this).attr('href');
-      spidey.get(href);
+      if (href && href.substr(0, 4) !== 'http') {
+        href = 'https://developer.mozilla.org' + href;
+      }
+      if (href && href.indexOf('$') === -1 && href.indexOf('?') === -1 && /Web\/JavaScript\/Reference/.exec(href.split('=')[0]) !== null) {
+        spidey.get(href);
+      }
     });
   };
 
@@ -27,32 +32,29 @@ requirejs([
   var file = fs.openSync(filename,'w');
 
   // main index of mdn's js docs
-  spidey.route('developer.mozilla.org', '/en/JavaScript/Reference', function ($) {
+  spidey.route('developer.mozilla.org', '/en-US/docs/tag/JavaScript', function ($) {
     visitLinks($);
   });
 
   var blacklist = [
-    // 'https://developer.mozilla.org/en/JavaScript/Reference'
   ];
 
   // some urls redirect to other pages w/o changing the url (for example: https://developer.mozilla.org/en/CSS/-moz-scrollbars-none)
   // so in addition to not visiting the same url twice, keep this list to prevent visiting the same title twice
   var titles = [];
 
-  spidey.route('developer.mozilla.org', /(\/en\/JavaScript_typed_arrays|\/en\/JavaScript\/Reference\/(Global_Objects|Statement|Operators))\/*/, function ($, url) {
-    if ( _.include(blacklist, url) ) return;
+  spidey.route('developer.mozilla.org', /\/en\-US\/docs\/Web\/JavaScript\/Reference\/*/, function ($, url) {
+    if ( _.include(blacklist,url) ) return;
     visitLinks($);
 
     console.log('---------');
     console.log('scraping:',url);
 
-    var title = $('article .page-title h1').text().trim();
-    if ( /Global_Objects/.test(url) && url.split('Global_Objects/').length > 1)
-      title = url.split('Global_Objects/')[1].replace(/\//g, '.');
+    var title = $('h1').text().trim();
     if ( title === '' || title === null ) {
       console.log('ERROR: could not get title, skipping');
       return;
-    } else if ( _.include(titles, title) ) {
+    } else if ( _.include(titles,title) ) {
       console.log('WARNING: already scraped something with this title, skipping');
       return;
     }
@@ -66,7 +68,7 @@ requirejs([
     scrapeData['sectionHTMLs'] = [];
 
     // get all section ids
-    var ids = _.map($('[id^=section_]'), function(div) { return div.attribs.id } );
+    var ids = _.map($('article[id]'), function(div) { return div.attribs.id } );
     if ( ids.length === 0 ) {
       console.log('WARNING: no sections...');
       return;
@@ -74,7 +76,7 @@ requirejs([
 
     for ( var i = 0; i < ids.length; i++ ) {
       // load the section html as its own jquery object
-      var $section = cheerio.load($('[id^=' + ids[i] + ']').html());
+      var $section = cheerio.load($('[id^="' + ids[i] + '"]').html());
 
       // strip scripts
       $section('script').remove();
@@ -99,7 +101,7 @@ requirejs([
   });
 
   // start 'er up
-  spidey.get('https://developer.mozilla.org/en/JavaScript/Reference').log('info');
+  spidey.get('https://developer.mozilla.org/en-US/docs/tag/JavaScript').log('info');
 
   process.on('exit', function () {
     fs.writeSync(file,JSON.stringify(results,null,'\t'));

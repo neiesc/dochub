@@ -9,10 +9,11 @@ define([], function(){
       { lang: 'php', name: 'PHP' },
       { lang: 'python', name: 'Python' },
       { lang: 'python3', name: 'Python3' },
-      { lang: 'nodejs', name: 'Node.js' }
+      { lang: 'nodejs', name: 'Node.js' },
+      { lang: 'webapi', name: 'WebAPI' }
     ]
   }
-  
+
   Settings.languages.sort(function(a, b){
     var nameA=a.name.toLowerCase(), nameB=b.name.toLowerCase()
     //sort string ascending
@@ -20,6 +21,6 @@ define([], function(){
     if (nameA > nameB) { return 1 }
     return 0 //default return value (no sorting)
   });
-  
+
   return Settings;
 });

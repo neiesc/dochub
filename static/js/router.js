@@ -5,7 +5,7 @@ define([
   'jQuery',
   'Underscore',
   'Backbone',
-  
+
   // Settings
   'settings',
 
@@ -20,6 +20,7 @@ define([
   'collections/mozdevcssprops',
   'collections/mdnhtmlelements',
   'collections/mdnjsobjs',
+  'collections/mozdevapiprops',
   'collections/mdndomobjs',
   'collections/phpexts',
   'collections/jqentries',
@@ -31,13 +32,13 @@ define([
   // Templates
   'text!templates/mdnpage.html',
 ], function(doc, $, _, Backbone,
-	    Settings,
+            Settings,
             TopNavView, JQuerySearchResultsView, LanguageView, PageScrapedLanguageView,
             FullWindowView,
-            MozDevCSSPropCollection, MDNHtmlElementsCollection, MDNJsObjsCollection,
+            MozDevCSSPropCollection, MDNHtmlElementsCollection, MDNJsObjsCollection, MozDevAPIPropCollection,
             MDNDomObjsCollection, PHPExtensionsCollection, JQEntriesCollection,
-            XSLTPagesCollection, PythonPagesCollection, 
-	    Python3PagesCollection, NodejsPagesCollection,
+            XSLTPagesCollection, PythonPagesCollection,
+            Python3PagesCollection, NodejsPagesCollection,
             MDNPage) {
 
   var DocHub = Backbone.Router.extend({
@@ -116,7 +117,14 @@ define([
           debounceTime: 200,
           minQueryLength: 3,
         }),
-	
+        'webapi' : new LanguageView({
+          languageName: 'WebAPI',
+          resultsClassNames: 'webapi',
+          collection: new MozDevAPIPropCollection(),
+          placeholder: 'Type a Web API name',
+          mainResultTemplate: MDNPage,
+        }),
+
         // 'xslt' : new PageScrapedLanguageView({
         //   languageName: 'XSLT',
         //   resultsClassNames: 'w3',
@@ -133,7 +141,7 @@ define([
       this.renderTopNav = _.once(function() {
         self.topNavView = new TopNavView({
           el: $('.navbar'),
-	  settings: Settings
+          settings: Settings
         });
         self.topNavView.render();
         self.topNavView.bind('changeLanguage', self.changeLanguage);

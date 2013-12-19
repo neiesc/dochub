@@ -20,19 +20,19 @@ requirejs([
       if (href && href.substr(0, 4) !== 'http') {
         href = 'https://developer.mozilla.org' + href;
       }
-      if (href && href.indexOf('$') === -1 && href.indexOf('?') === -1 && /Web\/CSS/.exec(href.split('=')[0]) !== null) {
+      if (href && href.indexOf('$') === -1 && href.indexOf('?') === -1 && /Web.?API/.exec(href.split('=')[0]) !== null) {
         spidey.get(href);
       }
     });
   };
 
   // file where we'll dump the json
-  var filename = path.dirname(__filename) + '/../static/data/css-mdn.json';
+  var filename = path.dirname(__filename) + '/../static/data/webapi-mdn.json';
   console.log('dumping to ' + filename);
   var file = fs.openSync(filename,'w');
 
-  // main index of mdn's css docs
-  spidey.route('developer.mozilla.org', '/en-US/docs/tag/CSS', function ($) {
+  // main index of mdn's Web API docs
+  spidey.route('developer.mozilla.org', '/en-US/docs/tag/WebAPI', function ($) {
     visitLinks($);
   });
 
@@ -43,7 +43,7 @@ requirejs([
   // so in addition to not visiting the same url twice, keep this list to prevent visiting the same title twice
   var titles = [];
 
-  spidey.route('developer.mozilla.org', /\/en\-US\/docs\/Web\/CSS\/*/, function ($, url) {
+  spidey.route('developer.mozilla.org', /\/en\-US\/docs\/Web.?API\/*/, function ($, url) {
     if ( _.include(blacklist,url) ) return;
     visitLinks($);
 
@@ -101,7 +101,7 @@ requirejs([
   });
 
   // start 'er up
-  spidey.get('https://developer.mozilla.org/en-US/docs/tag/CSS').log('info');
+  spidey.get('https://developer.mozilla.org/en-US/docs/tag/WebAPI').log('info');
 
   process.on('exit', function () {
     fs.writeSync(file,JSON.stringify(results,null,'\t'));

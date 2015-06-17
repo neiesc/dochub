@@ -9,7 +9,7 @@
 
 ## Usage
 [DocHub](http://edineisc.com.br/dochub/) on GitHub Pages
-### Running locally
+#### Running locally
 [Docker repositories](https://registry.hub.docker.com/u/mildred/dochub/) or manual
 
 * Download de [docfiles](https://github.com/neiesc/dochub/tree/gh-pages) `*.json` and paste in `static/data`

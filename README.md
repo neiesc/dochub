@@ -1,6 +1,5 @@
-# DocHub - speedy docs
+DocHub - speedy docs
 ======================
-
 [![Build Status](https://travis-ci.org/neiesc/dochub.png?branch=master)](https://travis-ci.org/neiesc/dochub) [![Dependency Status](https://gemnasium.com/neiesc/dochub.png)](https://gemnasium.com/neiesc/dochub) 
 
 ## Usage

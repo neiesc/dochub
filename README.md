@@ -3,10 +3,14 @@
 
 [![Build Status](https://travis-ci.org/neiesc/dochub.png?branch=master)](https://travis-ci.org/neiesc/dochub)
 [![Dependency Status](https://gemnasium.com/neiesc/dochub.png)](https://gemnasium.com/neiesc/dochub)
-<br />[DocHub](http://neiesc.github.io/dochub/) on GitHub Pages
+
+
 [CHANGELOG](CHANGELOG.md)
 
-## Running locally
+## Usage
+[DocHub](http://edineisc.com.br/dochub/) on GitHub Pages
+### Running locally
+[Docker repositories](https://registry.hub.docker.com/u/mildred/dochub/) or manual
 
 * Download de [docfiles](https://github.com/neiesc/dochub/tree/gh-pages) `*.json` and paste in `static/data`
 
